@@ -16,11 +16,6 @@ public class GreatestCommonDivisorCalculator {
      * 1. What are the divisors of each string?
      * 2. Which divisors are common to both strings?
      * 3. Which of the common divisors is longest?
-     * <p>
-     * Approach:
-     * - Scan through each string one char at a time until a char doesn't match
-     * - Filter for the substrings that are divisors of each string
-     * - Return the longest of the divisors
      */
     public String gcdOfStrings(String str1, String str2) {
         /*
