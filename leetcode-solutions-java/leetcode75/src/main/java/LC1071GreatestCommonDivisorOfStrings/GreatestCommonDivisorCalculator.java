@@ -16,6 +16,14 @@ public class GreatestCommonDivisorCalculator {
      * 1. What are the divisors of each string?
      * 2. Which divisors are common to both strings?
      * 3. Which of the common divisors is longest?
+     * <p>
+     * Time Complexity: O(N^2)
+     * Improvement:
+     * - Take advantage of known, guaranteed properties of strings with divisors to find the answer more efficiently
+     * - All pairs of strings with common divisors are homonyms when appended together
+     * - Leveraging that property, it's easy to tell if there is a common divisor - we don't have to calculate all
+     *      possible divisors of each string, only to filter out the non-common ones.
+     * - If there is a common divisor, return the longest common substring.  Otherwise nothing.
      */
     public String gcdOfStrings(String str1, String str2) {
         /*
