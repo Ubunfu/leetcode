@@ -2,20 +2,19 @@ package LC1768MergeStringsAlternately;
 
 class Solution {
     public String mergeAlternately(String word1, String word2) {
-        /**
-         * Questions:
-         * - Do we assume we start with the first word?
+        /*
+            Questions:
+            - Do we assume we start with the first word?
          */
-
         StringBuilder result = new StringBuilder();
 
         return getNextCharacter(word1, word2, result).toString();
     }
 
     private StringBuilder getNextCharacter(String firstWord, String secondWord, StringBuilder result) {
-        /**
-         * Guard clauses to stop recursion
-         * If either word is empty, append all remaining chars in the other word to the result and return
+        /*
+            Guard clauses to stop recursion
+            If either word is empty, append all remaining chars in the other word to the result and return
          */
         if (firstWord.isEmpty()) {
             result.append(secondWord);
@@ -26,8 +25,8 @@ class Solution {
             return result;
         }
 
-        /**
-         * Otherwise, take a bite out of each word, and recurse
+        /*
+            Otherwise, take a bite out of each word, and recurse
          */
         result.append(firstWord.charAt(0));
         result.append(secondWord.charAt(0));
