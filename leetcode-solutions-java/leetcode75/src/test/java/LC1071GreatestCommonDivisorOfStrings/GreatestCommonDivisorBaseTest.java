@@ -60,4 +60,13 @@ public class GreatestCommonDivisorBaseTest {
 
         assertThat(result).isEmpty();
     }
+
+    @Test
+    void given_longStrings_expect_returnsGcd() {
+        final String result = gcdCalculator.gcdOfStrings(
+                "ABCDABCDABCDABCDABCDABCDABCDABCDABCD",
+                "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD");
+
+        assertThat(result).isEqualTo("ABCD");
+    }
 }

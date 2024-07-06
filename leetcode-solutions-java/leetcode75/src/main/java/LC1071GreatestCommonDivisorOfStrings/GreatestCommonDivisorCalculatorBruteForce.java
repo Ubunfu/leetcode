@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  *     <li>Leveraging that property, it's easy to tell if there is a common divisor - we don't have to calculate all possible divisors of each string, only to filter out the non-common ones.</li>
  * </ul>
  *
- * @see GCDCalculatorGCDOfLengths
+ * @see GCDCalculatorEuclidean
  */
 public class GreatestCommonDivisorCalculatorBruteForce implements GreatestCommonDivisorCalculator {
 
