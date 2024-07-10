@@ -93,4 +93,38 @@ public abstract class SolutionBaseTest {
                 new int[][]{{10, 12}, {7, 8}, {2, 1}, {10, 11}, {9, 7}, {5, 4}, {3, 5}, {1, 3}, {3, 6}}))
                 .isEqualTo(3);
     }
+
+    @Test
+    void graphThreeNonSequentialNodes() {
+        assertThat(solution.countComponents(
+                12,
+                new int[][]{{100, 120}, {70, 80}, {20, 10}, {100, 110}, {90, 70}, {50, 40}, {30,
+                        50}, {10, 30}, {30, 60}}))
+                .isEqualTo(3);
+    }
+
+    @Test
+    void emptyGraph() {
+        assertThat(solution.countComponents(
+                0,
+                new int[][]{}))
+                .isEqualTo(0);
+    }
+
+    @Test
+    void edgelessGraph() {
+        assertThat(solution.countComponents(
+                3,
+                new int[][]{}))
+                .isEqualTo(3);
+    }
+
+    @Test
+    void graphThreeWithThreeNeighborlessNodes() {
+        assertThat(solution.countComponents(
+                15,
+                new int[][]{{100, 120}, {70, 80}, {20, 10}, {100, 110}, {90, 70}, {50, 40}, {30,
+                        50}, {10, 30}, {30, 60}}))
+                .isEqualTo(6);
+    }
 }
