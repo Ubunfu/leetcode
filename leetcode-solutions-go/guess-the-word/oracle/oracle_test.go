@@ -11,7 +11,7 @@ const LogIncorrectResult = "Expected return value '%d', but observed '%d'"
 
 func TestGivenInvalidWordExpectReturnsZeroAndErrorInvalidWord(t *testing.T) {
 	oracle := Oracle{
-		guessesLeft: 1,
+		GuessesLeft: 1,
 	}
 
 	result, err := oracle.Guess("catt")
@@ -36,9 +36,9 @@ func TestGivenExhaustedGuessesExpectReturnsZeroAndErrorExhaustedGuesses(t *testi
 
 func TestGivenValidWordAndGuessesLeftExpectReturnsCharMatches(t *testing.T) {
 	oracle := Oracle{
-		words:       []string{"taco", "tank", "bank", "pink", "polo"},
-		secret:      "tank",
-		guessesLeft: 3,
+		Words:       []string{"taco", "tank", "bank", "pink", "polo"},
+		Secret:      "tank",
+		GuessesLeft: 3,
 	}
 
 	result, err := oracle.Guess("taco")
@@ -48,5 +48,8 @@ func TestGivenValidWordAndGuessesLeftExpectReturnsCharMatches(t *testing.T) {
 	}
 	if result != 2 {
 		t.Errorf(LogIncorrectResult, 2, result)
+	}
+	if oracle.GuessesLeft >= 3 {
+		t.Errorf("Expected guesses left to be less than 3, but observed %d", oracle.GuessesLeft)
 	}
 }

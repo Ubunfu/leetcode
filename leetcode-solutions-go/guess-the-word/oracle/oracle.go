@@ -5,20 +5,30 @@ import "errors"
 var ErrorInvalidWord error = errors.New("invalid_word")
 var ErrorExhaustedGuesses error = errors.New("exhausted_guesses")
 
+/*
+Owns the set of valid words, the correct secret word, and the guess allowance.
+*/
 type Oracle struct {
-	words       []string
-	secret      string
-	guessesLeft int
+	Words       []string
+	Secret      string
+	GuessesLeft int
 }
 
+/*
+Submits a guess at the correct word to the Oracle.
+Returns an error if the guess is invalid or the guess allowance is empty.
+If the guess is valid and guesses remain, returns the number of runes in the
+guess that match the secret word in both value and position.
+*/
 func (o *Oracle) Guess(word string) (int, error) {
-	if o.guessesLeft == 0 {
+	if o.GuessesLeft == 0 {
 		return 0, ErrorExhaustedGuesses
 	}
-	if !isWordInList(word, o.words) {
+	o.GuessesLeft--
+	if !isWordInList(word, o.Words) {
 		return 0, ErrorInvalidWord
 	}
-	return calculateRuneMatches(word, o.secret), nil
+	return calculateRuneMatches(word, o.Secret), nil
 }
 
 func isWordInList(word string, wordList []string) bool {
